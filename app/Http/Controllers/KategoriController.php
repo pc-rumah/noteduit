@@ -35,8 +35,8 @@ class KategoriController extends Controller
 
         Kategori::create($validated);
 
-        return redirect()->route('kategori.index')
-            ->with('success', 'Kategori berhasil ditambahkan.');
+        toast('Berhasil Menambah Kategori', 'success')->timerProgressBar();
+        return redirect()->back();
     }
 
     /**
