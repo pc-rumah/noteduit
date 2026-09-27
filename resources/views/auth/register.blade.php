@@ -9,6 +9,13 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="form-group position-relative has-icon-left mb-4">
+                        <input type="text" class="form-control form-control-xl" placeholder="Name" name="name"
+                            :value="old('name')" required autofocus>
+                        <div class="form-control-icon">
+                            <i class="bi bi-person"></i>
+                        </div>
+                    </div>
+                    <div class="form-group position-relative has-icon-left mb-4">
                         <input type="email" class="form-control form-control-xl" placeholder="Email" name="email"
                             :value="old('email')" required autofocus>
                         <div class="form-control-icon">
