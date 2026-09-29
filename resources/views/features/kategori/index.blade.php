@@ -20,7 +20,7 @@
             <div class="row" id="table-hover-row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="p-2">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#createKategoriModal">
                                 Tambah Kategori
@@ -33,6 +33,7 @@
                                 <table class="table table-hover mb-0">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>Kategori</th>
                                             <th>ACTION</th>
                                         </tr>
@@ -41,19 +42,19 @@
                                         @if ($kategori->count() > 0)
                                             @foreach ($kategori as $item)
                                                 <tr>
+                                                    <td>{{ $kategori->firstItem() + $loop->index }}</td>
                                                     <td>{{ $item->name }}</td>
                                                     <td>
                                                         <a href="{{ route('kategori.edit', $item->id) }}"
-                                                            class="btn btn-sm btn-primary">Edit</a>
-                                                        <form action="{{ route('kategori.destroy', $item->id) }}"
-                                                            method="POST" style="display: inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                                onclick="return confirm('Are you sure?')">Delete</button>
-                                                        </form>
+                                                            class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                                            data-bs-target="#editKategoriModal{{ $item->id }}">Edit</a>
+                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#deleteKategoriModal{{ $item->id }}">Delete</button>
                                                     </td>
                                                 </tr>
+                                                @include('partials.kategori.edit', ['kategori' => $item])
+                                                @include('partials.kategori.delete', ['kategori' => $item])
                                             @endforeach
                                         @else
                                             <tr>
@@ -67,6 +68,7 @@
                     </div>
                 </div>
             </div>
+            {{ $kategori->links() }}
         </section>
 
     </div>
