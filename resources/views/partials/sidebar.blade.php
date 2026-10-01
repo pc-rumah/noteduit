@@ -52,10 +52,10 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item  ">
-                    <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->is('wallet') ? 'active' : '' }}">
+                    <a href="/wallet" class='sidebar-link'>
                         <i class="bi bi-puzzle"></i>
-                        <span>Contribute</span>
+                        <span>Wallet</span>
                     </a>
                 </li>
 
