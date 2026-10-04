@@ -59,6 +59,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ request()->is('transaction') ? 'active' : '' }}">
+                    <a href="/transaction" class='sidebar-link'>
+                        <i class="bi bi-puzzle"></i>
+                        <span>Transaction</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

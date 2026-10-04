@@ -8,4 +8,9 @@ class Kategori extends Model
 {
     protected $table = 'kategori';
     protected $fillable = ['name'];
+
+    public function transaction()
+    {
+        return $this->hasMany(Kategori::class);
+    }
 }

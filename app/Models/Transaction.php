@@ -8,4 +8,14 @@ class Transaction extends Model
 {
     protected $table = 'transactions';
     protected $guarded = ['id'];
+
+    public function wallet()
+    {
+        return $this->belongsTo(Wallet::class);
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTransaction;
+use App\Models\Kategori;
 use App\Models\Transaction;
+use App\Models\Wallet;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -12,23 +16,20 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transaction = Transaction::paginate(5);
+        $kategori = Kategori::pluck('name', 'id');
+        $wallet = Wallet::select('id', 'name')->get();
+
+        return view('features.transaction.index', compact('transaction', 'kategori', 'wallet'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(StoreTransaction $request)
     {
-        //
-    }
+        $validated = $request->validated();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        Transaction::create($validated);
+        toast('Transaksi Berhasil', 'success')->timerProgressBar();
+        return redirect()->back();
     }
 
     /**
