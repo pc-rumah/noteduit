@@ -6,19 +6,16 @@ use App\Http\Requests\StoreTransaction;
 use App\Models\Kategori;
 use App\Models\Transaction;
 use App\Models\Wallet;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $transaction = Transaction::paginate(5);
         $kategori = Kategori::pluck('name', 'id');
-        $wallet = Wallet::select('id', 'name')->get();
+        $wallet = Wallet::select('id', 'name', 'balance')->get();
 
         return view('features.transaction.index', compact('transaction', 'kategori', 'wallet'));
     }
@@ -27,30 +24,39 @@ class TransactionController extends Controller
     {
         $validated = $request->validated();
 
-        Transaction::create($validated);
-        toast('Transaksi Berhasil', 'success')->timerProgressBar();
-        return redirect()->back();
+        try {
+            DB::transaction(function () use ($validated) {
+                $transaction = Transaction::create($validated);
+
+                $wallet = Wallet::where('id', $validated['wallet_id'])->lockForUpdate()->firstOrFail();
+
+                // cek saldo
+                if (in_array($validated['type'], ['expense', 'transfer'])) {
+                    if ($wallet->balance < $validated['amount']) {
+                        throw new \Exception('Saldo tidak mencukupi untuk melakukan transaksi ini.');
+                    }
+                }
+
+                if ($validated['type'] === 'income') {
+                    $wallet->increment('balance', $validated['amount']);
+                } elseif ($validated['type'] === 'expense') {
+                    $wallet->decrement('balance', $validated['amount']);
+                } elseif ($validated['type'] === 'transfer') {
+                    $destinationWallet = Wallet::findOrFail($validated['destination_wallet_id']);
+                    $wallet->decrement('balance', $validated['amount']);
+                    $destinationWallet->increment('balance', $validated['amount']);
+                }
+            });
+
+            toast('Transaksi Berhasil', 'success')->timerProgressBar();
+            return redirect()->back();
+        } catch (\Exception $e) {
+            toast($e->getMessage(), 'error')->timerProgressBar();
+            return redirect()->back()->withInput();
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Transaction $transaction)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Transaction $transaction)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Transaction $transaction)
     {
         //

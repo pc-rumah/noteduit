@@ -39,7 +39,8 @@
                             <select class="form-select" name="kategori_id" id="transactionCategory" required>
                                 <option value="">-- Pilih Kategori --</option>
                                 @foreach ($kategori as $id => $name)
-                                    <option value="{{ $id }}" @selected(old('kategori_id') == $id)> {{ $name }} </option>
+                                    <option value="{{ $id }}" @selected(old('kategori_id') == $id)>
+                                        {{ $name }} </option>
                                 @endforeach
                             </select>
                         </fieldset>
@@ -51,7 +52,8 @@
                             <select class="form-select" name="wallet_id" id="Wallet" required>
                                 <option value="">-- Pilih Dompet --</option>
                                 @foreach ($wallet as $item)
-                                    <option value="{{ $item->id }}" @selected(old('wallet_id') == $item->id)> {{ $item->name }} </option>
+                                    <option value="{{ $item->id }}" @selected(old('wallet_id') == $item->id)>
+                                        {{ $item->name }} - {{ $item->balance }} </option>
                                 @endforeach
                             </select>
                         </fieldset>

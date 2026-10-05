@@ -36,6 +36,7 @@
                                             <th>No</th>
                                             <th>Name</th>
                                             <th>Kategori</th>
+                                            <th>Wallet</th>
                                             <th>Tipe</th>
                                             <th>Amount</th>
                                             <th>Date</th>
@@ -49,6 +50,7 @@
                                                     <td>{{ $transaction->firstItem() + $loop->index }}</td>
                                                     <td>{{ $item->name }}</td>
                                                     <td>{{ $item->kategori->name }}</td>
+                                                    <td>{{ $item->wallet->name }}</td>
                                                     <td>{{ $item->type }}</td>
                                                     <td>{{ Number::currency($item->amount, in: 'IDR', locale: 'id') }}
                                                     </td>
