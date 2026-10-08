@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="index.html"><img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo"
+                    <a href="/"><img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo"
                             srcset=""></a>
                 </div>
                 <div class="toggler">
@@ -22,7 +22,7 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item  has-sub">
+                {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>Layouts</span>
@@ -41,9 +41,9 @@
                             <a href="layout-horizontal.html">Horizontal Menu</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
-                <li class="sidebar-title">Raise Support</li>
+                <li class="sidebar-title">Feature</li>
 
                 <li class="sidebar-item {{ request()->is('kategori') ? 'active' : '' }}">
                     <a href="/kategori" class='sidebar-link'>

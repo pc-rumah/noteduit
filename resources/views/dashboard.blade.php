@@ -16,8 +16,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Profile Views</h6>
-                                        <h6 class="font-extrabold mb-0">112.000</h6>
+                                        <h6 class="text-muted font-semibold">Balance Total</h6>
+                                        <h6 class="font-extrabold mb-0">
+                                            {{ number_format($total, 0, ',', '.') }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -33,8 +34,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Followers</h6>
-                                        <h6 class="font-extrabold mb-0">183.000</h6>
+                                        <h6 class="text-muted font-semibold">Total Expense</h6>
+                                        <h6 class="font-extrabold mb-0">{{ number_format($totalExpense, 0, ',', '.') }}
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
@@ -50,8 +52,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Following</h6>
-                                        <h6 class="font-extrabold mb-0">80.000</h6>
+                                        <h6 class="text-muted font-semibold">Total Income</h6>
+                                        <h6 class="font-extrabold mb-0">{{ number_format($totalIncome, 0, ',', '.') }}
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
@@ -81,11 +84,11 @@
                     <div class="card-body py-4 px-5">
                         <div class="d-flex align-items-center">
                             <div class="avatar avatar-xl">
-                                <img src="assets/images/faces/1.jpg" alt="Face 1">
+                                <img src="{{ asset('assets/images/faces/1.jpg') }}" alt="Face 1">
                             </div>
                             <div class="ms-3 name">
-                                <h5 class="font-bold">John Duck</h5>
-                                <h6 class="text-muted mb-0">@johnducky</h6>
+                                <h5 class="font-bold">{{ auth()->user()->name }}</h5>
+                                <h6 class="text-muted mb-0">{{ auth()->user()->email }}</h6>
                             </div>
                         </div>
                     </div>

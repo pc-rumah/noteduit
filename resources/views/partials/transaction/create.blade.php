@@ -33,6 +33,23 @@
                         </fieldset>
                     </div>
 
+                    {{-- Destination Wallet --}}
+                    <div class="form-group mt-3" id="destinationWalletGroup" style="display: none;">
+                        <label for="destinationWallet">Transfer Ke</label>
+
+                        <fieldset class="form-group">
+                            <select class="form-select" name="destination_wallet_id" id="destinationWallet">
+                                <option value="">-- Pilih Wallet Tujuan --</option>
+
+                                @foreach ($wallet as $item)
+                                    <option value="{{ $item->id }}">
+                                        {{ $item->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </fieldset>
+                    </div>
+
                     <div class="form-group">
                         <label for="transactionCategory">Transaction Category</label>
                         <fieldset class="form-group">

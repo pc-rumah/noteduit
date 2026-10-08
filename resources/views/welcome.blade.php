@@ -165,7 +165,7 @@
                             <div
                                 class="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
                                 <a class="px-7 py-4 rounded-xl text-base font-semibold text-on-surface bg-surface shadow-[6px_6px_14px_rgba(0,0,0,0.07),-6px_-6px_14px_rgba(255,255,255,0.8)] active:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] active:scale-[0.99] transition-all flex items-center justify-center gap-2"
-                                    href="#">
+                                    href="/login">
                                     <span
                                         class="material-symbols-outlined text-lg text-on-surface-variant">lock_open</span>
                                     <span>Log In to Account</span>

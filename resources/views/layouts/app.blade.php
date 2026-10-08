@@ -25,8 +25,7 @@
         </div>
     </div>
     @include('partials.scripts')
-    @include('sweetalert::alert')
-    @include('sweetalert::error')
+    @sweetAlert
 </body>
 
 </html>
