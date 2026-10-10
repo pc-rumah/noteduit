@@ -124,8 +124,8 @@
         class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[6px_6px_16px_rgba(0,0,0,0.04),-6px_-6px_16px_rgba(255,255,255,0.7)]">
         <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
             <div class="flex items-center gap-3 shrink-0"><img alt="FinSilk Logo" class="h-8 w-auto object-contain"
-                    src="https://lh3.googleusercontent.com/aida/AEtjO1W0QuIHbuypuPRcIMO14MMySxNi-gqx2t9LYY71kCBapzlVaM0MR2dbuyTRzIf4VCtz3AWA8dSATa_v1AoLN0GexG9dBnwzVKO6jXDCs4wZ0sM8Ustm_uagwXNc65lBlK45QlZVENinfnh7UFd1USmIF5AT3hQuJzrPAzt5Lnjw07Lg7nqepFYSn_wIf0LSMEr015VMDKILnhj85Rk47ZKzQgAh4RaMCJhVSsFMx2wRZhHq4bCa_Q5Td9gl" /><span
-                    class="text-xl font-body font-semibold tracking-tight text-on-surface">FinSilk</span></div>
+                    src="{{ asset('assets/images/logo/logo.webp') }}" /><span
+                    class="text-xl font-body font-semibold tracking-tight text-on-surface">Fin</span></div>
 
             <div class="flex items-center gap-4 shrink-0"><a
                     class="px-5 py-2.5 rounded-xl text-sm font-medium text-on-surface bg-surface shadow-[4px_4px_10px_rgba(0,0,0,0.06),-4px_-4px_10px_rgba(255,255,255,0.7)] active:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.06),inset_-3px_-3px_6px_rgba(255,255,255,0.5)] transition-all"
@@ -379,8 +379,8 @@
             <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12">
                 <div class="md:col-span-5 space-y-4">
                     <div class="flex items-center gap-3"><img alt="FinSilk Logo" class="h-7 w-auto object-contain"
-                            src="https://lh3.googleusercontent.com/aida/AEtjO1W0QuIHbuypuPRcIMO14MMySxNi-gqx2t9LYY71kCBapzlVaM0MR2dbuyTRzIf4VCtz3AWA8dSATa_v1AoLN0GexG9dBnwzVKO6jXDCs4wZ0sM8Ustm_uagwXNc65lBlK45QlZVENinfnh7UFd1USmIF5AT3hQuJzrPAzt5Lnjw07Lg7nqepFYSn_wIf0LSMEr015VMDKILnhj85Rk47ZKzQgAh4RaMCJhVSsFMx2wRZhHq4bCa_Q5Td9gl" /><span
-                            class="text-lg font-body font-semibold text-on-surface">FinSilk</span></div>
+                            src="{{ asset('assets/images/logo/logo.webp') }}" /><span
+                            class="text-lg font-body font-semibold text-on-surface">Fin</span></div>
                     <p class="text-sm text-on-surface-variant max-w-sm leading-relaxed">Sculpted personal wealth &amp;
                         records intelligence. Elegant, tactile tracking engineered for total financial clarity.</p>
                 </div>
