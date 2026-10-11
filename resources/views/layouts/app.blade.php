@@ -25,6 +25,9 @@
         </div>
     </div>
     @include('partials.scripts')
+    @if (isset($scripts))
+        {{ $scripts }}
+    @endif
     @sweetAlert
 </body>
 
