@@ -23,7 +23,10 @@ class TransactionController extends Controller
     public function store(StoreTransaction $request, TransactionService $service)
     {
         try {
-            $service->handle($request->validated());
+            $data = $request->validated();
+            $data['user_id'] = $request->user()->id;
+
+            $service->handle($data);
             toast('Transaksi Berhasil', 'success')->timerProgressBar();
 
             return redirect()->back();
