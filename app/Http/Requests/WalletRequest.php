@@ -25,7 +25,7 @@ class WalletRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'number' => 'numeric',
+            'number' => 'nullable|numeric',
             'balance' => 'required|numeric|min:1',
         ];
     }

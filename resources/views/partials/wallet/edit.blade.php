@@ -27,7 +27,7 @@
                         <label for="walletNumber">Number</label>
                         <input type="number" id="walletNumber" name="number"
                             class="form-control @error('number') is-invalid @enderror"
-                            value="{{ old('number', $wallet->number) }}" placeholder="Masukkan nomor wallet" required
+                            value="{{ old('number', $wallet->number) }}" placeholder="Masukkan nomor wallet"
                             autofocus>
                         @error('number')
                             <div class="invalid-feedback">{{ $message }}</div>
