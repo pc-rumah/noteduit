@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,18 @@ Route::middleware('auth')->group(function () {
     Route::resource('kategori', KategoriController::class);
     Route::resource('wallet', WalletController::class);
     Route::resource('transaction', TransactionController::class);
+});
+
+Route::middleware('guest')->group(function () {
+    Route::get('/auth/google', [
+        GoogleController::class,
+        'redirect',
+    ])->name('google.redirect');
+
+    Route::get('/auth/google/callback', [
+        GoogleController::class,
+        'callback',
+    ])->name('google.callback');
 });
 
 require __DIR__ . '/auth.php';
