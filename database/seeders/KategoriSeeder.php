@@ -14,25 +14,36 @@ class KategoriSeeder extends Seeder
     public function run(): void
     {
         Kategori::insert([
-            'name' => 'makan & minum',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ], [
-            'name' => 'kendaraan',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ], [
-            'name' => 'rumah',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ], [
-            'name' => 'olahraga',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ], [
-            'name' => 'hobi',
-            'created_at' => now(),
-            'updated_at' => now(),
+            [
+                'name' => 'makan & minum',
+                'created_at' => now(),
+                'updated_at' => now(),
+                'user_id' => 1,
+            ],
+            [
+                'name' => 'kendaraan',
+                'created_at' => now(),
+                'updated_at' => now(),
+                'user_id' => 1,
+            ],
+            [
+                'name' => 'rumah',
+                'created_at' => now(),
+                'updated_at' => now(),
+                'user_id' => 1,
+            ],
+            [
+                'name' => 'olahraga',
+                'created_at' => now(),
+                'updated_at' => now(),
+                'user_id' => 1,
+            ],
+            [
+                'name' => 'hobi',
+                'created_at' => now(),
+                'updated_at' => now(),
+                'user_id' => 1,
+            ],
         ]);
     }
 }

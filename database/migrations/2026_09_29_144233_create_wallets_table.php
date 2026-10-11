@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('number', 50)->nullable();
             $table->unsignedBigInteger('balance')->default(0);
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

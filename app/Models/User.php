@@ -45,4 +45,19 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function kategori()
+    {
+        return $this->hasMany(Kategori::class);
+    }
+
+    public function wallet()
+    {
+        return $this->hasMany(Wallet::class);
+    }
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

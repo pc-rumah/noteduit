@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('wallet_id')->constrained('wallets')->cascadeOnDelete();
             $table->foreignId('destination_wallet_id')->nullable()->constrained('wallets')->restrictOnDelete();
             $table->foreignId('kategori_id')->constrained('kategori')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

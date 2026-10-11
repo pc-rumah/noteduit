@@ -10,9 +10,9 @@ class KategoriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $kategori = Kategori::paginate(5);
+        $kategori = $request->user()->Kategori()->paginate(5);
         return view('features.kategori.index', compact('kategori'));
     }
 
@@ -22,7 +22,7 @@ class KategoriController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        Kategori::create($validated);
+        $request->user()->kategori()->create($validated);
 
         toast('Berhasil Menambah Kategori', 'success')->timerProgressBar();
         return redirect()->back();
@@ -30,6 +30,8 @@ class KategoriController extends Controller
 
     public function update(Request $request, Kategori $kategori)
     {
+        $this->authorize('update', $kategori);
+
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
         ]);
@@ -45,6 +47,7 @@ class KategoriController extends Controller
      */
     public function destroy(Kategori $kategori)
     {
+        $this->authorize('delete', $kategori);
         $kategori->delete();
 
         toast('Berhasil Menghapus Kategori', 'success')->timerProgressBar();

@@ -21,13 +21,15 @@ class WalletController extends Controller
     {
         $validated = $request->validated();
 
-        Wallet::create($validated);
+        $request->user()->wallet()->create($validated);
         toast('berhasil menambah wallet', 'success')->timerProgressBar();
         return redirect()->back();
     }
 
     public function update(UpdateWallet $request, Wallet $wallet)
     {
+        $this->authorize('update', $wallet);
+
         $validated = $request->validated();
 
         $wallet->update($validated);
@@ -40,6 +42,7 @@ class WalletController extends Controller
      */
     public function destroy(Wallet $wallet)
     {
+        $this->authorize('delete', $wallet);
         $wallet->delete();
         toast('Berhasil Menghapus Wallet', 'success')->timerProgressBar();
         return redirect()->back();
