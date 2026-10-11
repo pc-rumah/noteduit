@@ -25,7 +25,7 @@ class WalletRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'number' => 'required|numeric|min:1',
+            'number' => 'numeric',
             'balance' => 'required|numeric|min:1',
         ];
     }
@@ -37,9 +37,7 @@ class WalletRequest extends FormRequest
             'name.string' => 'The name must be a valid string.',
             'name.max' => 'The name may not be greater than 255 characters.',
 
-            'number.required' => 'The number field is required.',
             'number.numeric' => 'The number must be a number.',
-            'number.min' => 'The number must be at least 1.',
 
             'balance.required' => 'The balance field is required.',
             'balance.numeric' => 'The balance must be a number.',
