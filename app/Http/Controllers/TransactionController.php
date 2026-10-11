@@ -11,10 +11,10 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $transaction = Transaction::paginate(5);
-        $kategori = Kategori::pluck('name', 'id');
+        $kategori = $request->user()->Kategori()->pluck('name', 'id');
         $wallet = Wallet::select('id', 'name', 'balance')->get();
 
         return view('features.transaction.index', compact('transaction', 'kategori', 'wallet'));
