@@ -24,7 +24,7 @@ class UpdateWallet extends FormRequest
     {
         return [
             'name'    => 'sometimes|required|string|max:255',
-            'number'  => 'sometimes|required|numeric|min:1',
+            'number'  => 'sometimes|nullable|numeric|min:1',
             'balance' => 'sometimes|required|numeric|min:0',
         ];
     }
@@ -36,7 +36,6 @@ class UpdateWallet extends FormRequest
             'name.string'      => 'The name must be a valid string.',
             'name.max'         => 'The name may not be greater than 255 characters.',
 
-            'number.required'  => 'The number field is required.',
             'number.numeric'   => 'The number must be a number.',
             'number.min'       => 'The number must be at least 1.',
 

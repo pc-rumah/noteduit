@@ -22,7 +22,7 @@
                     <div class="card">
                         <div class="p-2">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#createKategoriModal">
+                                data-bs-target="#createWalletModal">
                                 Tambah Wallet
                             </button>
                             @include('partials.wallet.create')

@@ -1,9 +1,9 @@
-<div class="modal fade text-left" id="createKategoriModal" tabindex="-1" role="dialog"
-    aria-labelledby="createKategoriModalLabel" aria-hidden="true">
+<div class="modal fade text-left" id="createWalletModal" tabindex="-1" role="dialog"
+    aria-labelledby="createWalletModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createKategoriModalLabel">Tambah Wallet</h5>
+                <h5 class="modal-title" id="createWalletModalLabel">Tambah Wallet</h5>
                 <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
                     <i data-feather="x"></i>
                 </button>
@@ -25,7 +25,7 @@
                         <label for="walletnumber">Number</label>
                         <input type="number" id="walletnumber" name="number"
                             class="form-control @error('number') is-invalid @enderror" value="{{ old('number') }}"
-                            placeholder="Masukkan nomor wallet" required autofocus>
+                            placeholder="Masukkan nomor wallet" autofocus>
                         @error('number')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -41,6 +41,14 @@
                         @enderror
                     </div>
                 </div>
+
+                @if ($errors->hasAny(['name', 'number', 'balance']))
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            bootstrap.Modal.getOrCreateInstance(document.getElementById('createWalletModal')).show();
+                        });
+                    </script>
+                @endif
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">
                         <i class="bx bx-x d-block d-sm-none"></i>
