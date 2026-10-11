@@ -127,11 +127,23 @@
                     src="{{ asset('assets/images/logo/logo.webp') }}" /><span
                     class="text-xl font-body font-semibold tracking-tight text-on-surface">Fin</span></div>
 
-            <div class="flex items-center gap-4 shrink-0"><a
-                    class="px-5 py-2.5 rounded-xl text-sm font-medium text-on-surface bg-surface shadow-[4px_4px_10px_rgba(0,0,0,0.06),-4px_-4px_10px_rgba(255,255,255,0.7)] active:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.06),inset_-3px_-3px_6px_rgba(255,255,255,0.5)] transition-all"
-                    data-path="login" href="/login">Log In</a><a
-                    class="px-5 py-2.5 rounded-xl text-sm font-medium text-on-primary bg-primary shadow-[4px_4px_12px_rgba(99,102,241,0.35),-2px_-2px_8px_rgba(255,255,255,0.5)] active:opacity-95 transition-all"
-                    data-path="signup" href="/register">Register</a>
+            <div class="flex items-center gap-4 shrink-0">
+                @auth
+                    <a class="px-5 py-2.5 rounded-xl text-sm font-medium text-on-surface bg-surface shadow-[4px_4px_10px_rgba(0,0,0,0.06),-4px_-4px_10px_rgba(255,255,255,0.7)] active:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.06),inset_-3px_-3px_6px_rgba(255,255,255,0.5)] transition-all"
+                        data-path="login" href="/dashboard">Dashboard</a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a class="px-5 py-2.5 rounded-xl text-sm font-medium text-on-surface bg-surface shadow-[4px_4px_10px_rgba(0,0,0,0.06),-4px_-4px_10px_rgba(255,255,255,0.7)] active:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.06),inset_-3px_-3px_6px_rgba(255,255,255,0.5)] transition-all"
+                        data-path="login" href="/login"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                @else
+                    <a class="px-5 py-2.5 rounded-xl text-sm font-medium text-on-surface bg-surface shadow-[4px_4px_10px_rgba(0,0,0,0.06),-4px_-4px_10px_rgba(255,255,255,0.7)] active:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.06),inset_-3px_-3px_6px_rgba(255,255,255,0.5)] transition-all"
+                        data-path="login" href="/login">Log In</a><a
+                        class="px-5 py-2.5 rounded-xl text-sm font-medium text-on-primary bg-primary shadow-[4px_4px_12px_rgba(99,102,241,0.35),-2px_-2px_8px_rgba(255,255,255,0.5)] active:opacity-95 transition-all"
+                        data-path="signup" href="/register">Register</a>
+                @endauth
             </div>
         </div>
     </header>
